@@ -3,7 +3,7 @@
     <el-row>
       <img
         title="Avatar"
-        class="avatarImg"
+        class="radius avatarImg"
         :src="avatarImgUrl"
       >
     </el-row>
@@ -45,6 +45,15 @@
         <i class="fab fa-weixin fa-lg"></i>
       </el-link>
     </el-row>
+
+    <el-row class="margin-row">
+      <div class="radius">
+        <span
+          class="hitokoto"
+          v-text="hitokoto"
+        ></span>
+      </div>
+    </el-row>
   </el-card>
 </template>
 
@@ -54,7 +63,8 @@ export default {
   name: 'Author',
   data() {
     return {
-      avatarImgUrl: require('@/assets/avatar.png')
+      avatarImgUrl: require('@/assets/avatar.png'),
+      hitokoto: '桃李春风一杯酒，江湖夜雨十年灯'
     }
   },
   methods: {
@@ -84,9 +94,18 @@ export default {
   margin-top: 1rem;
 }
 
-.avatarImg {
-  width: 80%;
+.radius {
   border: 1px solid #d7dae2;
   border-radius: 4px;
+}
+
+.avatarImg {
+  width: 80%;
+}
+
+.hitokoto {
+  white-space: normal;
+  word-break: break-word;
+  word-wrap: break-word;
 }
 </style>
