@@ -59,6 +59,8 @@
 
 
 <script>
+import { getHitokoto } from '@/api/hitokoto'
+
 export default {
   name: 'Author',
   data() {
@@ -74,6 +76,11 @@ export default {
     hideQrCode() {
       this.avatarImgUrl = require('@/assets/avatar.png');
     }
+  },
+  mounted() {
+    getHitokoto().then(data => {
+      this.hitokoto = data.hitokoto
+    })
   }
 }
 </script>
