@@ -9,10 +9,11 @@
         type="flex"
         :gutter="18"
       >
-        <el-col :span="20">
+        <el-col :span="19">
+          
         </el-col>
 
-        <el-col :span="6">
+        <el-col :span="5">
           <author></author>
         </el-col>
       </el-row>

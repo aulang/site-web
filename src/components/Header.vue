@@ -5,7 +5,7 @@
     :gutter="18"
   >
     <el-col
-      :span="20"
+      :span="19"
       class="links"
     >
       <el-link
@@ -13,12 +13,13 @@
         v-for="link in links"
         :key="link.name"
         :href="link.url"
+        :target="link.target"
         v-text="link.name"
       >
       </el-link>
     </el-col>
 
-    <el-col :span="6">
+    <el-col :span="5">
       <el-input
         type="text"
         placeholder="输入关键字搜索"
@@ -41,15 +42,18 @@ export default {
       links: [
         {
           name: 'Aulang',
-          url: '/'
+          url: '/',
+          target: '_self'
         },
         {
           name: '关于',
-          url: '/about'
+          url: '/about',
+          target: '_self'
         },
         {
           name: '百度',
-          url: 'https://www.baidu.com'
+          url: 'https://www.baidu.com',
+          target: '_blank'
         }
       ],
       keyword: ''
