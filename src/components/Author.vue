@@ -77,7 +77,7 @@ export default {
       this.avatarImgUrl = require('@/assets/avatar.png');
     }
   },
-  mounted() {
+  created() {
     getHitokoto().then(data => {
       this.hitokoto = data.hitokoto
     })
