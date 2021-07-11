@@ -6,15 +6,16 @@
   >
     <el-col
       :span="19"
-      class="links"
+      class="menus"
     >
       <el-link
-        type="primary"
-        v-for="link in links"
-        :key="link.name"
-        :href="link.url"
-        :target="link.target"
-        v-text="link.name"
+        type="success"
+        v-for="menu in menus"
+        :key="menu.title"
+        :href="menu.url"
+        :target="menu.target"
+        :title="menu.desc"
+        v-text="menu.title"
       >
       </el-link>
     </el-col>
@@ -28,6 +29,7 @@
         <el-button
           slot="append"
           icon="el-icon-s-promotion"
+          @click="search"
         ></el-button>
       </el-input>
     </el-col>
@@ -35,29 +37,37 @@
 </template>
 
 <script>
+import { loadConfig } from '@/store/localstore';
 export default {
   name: 'WlHeader',
   data() {
     return {
-      links: [
-        {
-          name: 'Aulang',
-          url: '/',
-          target: '_self'
-        },
-        {
-          name: '关于',
-          url: '/about',
-          target: '_self'
-        },
-        {
-          name: '百度',
-          url: 'https://www.baidu.com',
-          target: '_blank'
-        }
-      ],
+      menus: [],
       keyword: ''
     }
+  },
+  methods: {
+    search() {
+      if (this.keyword) {
+        window.open(`https://www.baidu.com/s?wd=${this.keyword}`);
+      }
+    }
+  },
+  created() {
+    let config = loadConfig();
+    if (!config) {
+      return;
+    }
+
+    this.menus = config.menus.map(e => {
+      if (e.url.startsWith('http')) {
+        e.target = '_blank';
+      } else {
+        e.target = '_self'
+      }
+
+      return e;
+    });
   }
 };
 </script>
@@ -69,11 +79,11 @@ export default {
   align-items: center;
 }
 
-.links {
+.menus {
   text-align: start;
 }
 
-.links .el-link {
+.menus .el-link {
   margin-right: 1rem;
   font-size: 18px;
   vertical-align: baseline;

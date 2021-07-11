@@ -16,7 +16,9 @@
         </el-col>
 
         <el-col :span="5">
-          <author></author>
+          <author />
+          <category class="mt" />
+          <friendly-link class="mt" />
         </el-col>
       </el-row>
 
@@ -32,11 +34,13 @@
 <script>
 import Author from '@/components/Author.vue';
 import WlHeader from '@/components/Header.vue';
+import Category from '@/components/Category.vue';
 import BeiAnInfo from '@/components/BeiAnInfo.vue';
+import FriendlyLink from '@/components/FriendlyLink.vue';
 
 export default {
   name: 'Layout',
-  components: { BeiAnInfo, WlHeader, Author }
+  components: { BeiAnInfo, WlHeader, Author, FriendlyLink, Category }
 }
 </script>
 
@@ -44,5 +48,8 @@ export default {
 .layout {
   width: 90%;
   display: inline-flex;
+}
+.mt {
+  margin-top: 0.5rem;
 }
 </style>
