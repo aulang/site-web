@@ -6,3 +6,10 @@ export function articlesPage(pageNo, pageSize) {
         method: 'get'
     })
 }
+
+export function getCategories() {
+    return request({
+        url: '/categories',
+        method: 'get'
+    })
+}

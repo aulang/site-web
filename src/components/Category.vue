@@ -1,37 +1,44 @@
 <template>
   <el-card class="box-card">
     <div slot="header">
-      <span>文字分类</span>
+      <span>文章分类</span>
     </div>
     <el-row
       class="box-row"
       v-for="category in categories"
       :key="category.id"
     >
-      <el-link
-        type="success"
-        target="_self"
-        :href="category.name"
-        :title="category.count"
-        v-text="category.name"
+      <router-link
+        class="el-link el-link--success is-underline"
+        :to="'page?category=' + category.id"
       >
-      </el-link>
+        <i class="fa fa-book"></i>
+        <span v-text="category.name"></span>
+        <el-tag
+          size="mini"
+          v-text="category.count"
+        ></el-tag>
+      </router-link>
     </el-row>
   </el-card>
 </template>
 
 <script>
+import { getCategories } from '@/api/article'
+
 export default {
   name: 'Category',
   data() {
     return {
-      categories: [
-        { "id": "5eb4173a9c65ccb5d3745382", "name": "技术博客", "count": 0, "order": 1, "creationDate": "2020-05-04T01:12:11.735Z" },
-        { "id": "5eb4173a9c65ccb5d3745383", "name": "散文随笔", "count": 1, "order": 2, "creationDate": "2020-05-04T01:12:11.735Z" },
-        { "id": "5eb4173a9c65ccb5d3745384", "name": "日常杂记", "count": 0, "order": 3, "creationDate": "2020-05-04T01:12:11.735Z" },
-        { "id": "5eb4173a9c65ccb5d3745385", "name": "长篇连载", "count": 0, "order": 4, "creationDate": "2020-05-04T01:12:11.735Z" }
-      ]
+      categories: []
     }
+  },
+  created() {
+    getCategories().then(response => {
+      if (response.code === 0) {
+        this.categories = response.data;
+      }
+    })
   }
 }
 </script>
@@ -42,5 +49,8 @@ export default {
 }
 .box-row {
   padding-bottom: 0.5rem;
+}
+.el-link span {
+  padding: 0px 10px 0px 10px;
 }
 </style>

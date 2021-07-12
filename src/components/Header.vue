@@ -10,6 +10,10 @@
     >
       <el-link
         type="success"
+        href="/"
+      >Aulang</el-link>
+      <el-link
+        type="success"
         v-for="menu in menus"
         :key="menu.title"
         :href="menu.url"

@@ -14,7 +14,7 @@ export default {
       return
     }
     getConfig().then(response => {
-      if (response.code == 0) {
+      if (response.code === 0) {
         saveConfig(response.data);
       }
     });
