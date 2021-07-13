@@ -1,19 +1,24 @@
 <template>
   <layout>
-    <el-row class="title">
-      <router-link
-        class="el-link el-link--default"
-        :to="'/article/' + id"
+    <el-card class="box-card">
+      <div
+        slot="header"
+        class="title"
       >
-        <span v-text="title"></span>
-      </router-link>
-    </el-row>
+        <router-link
+          class="el-link el-link--default"
+          :to="'/article/' + id"
+        >
+          <span v-text="title"></span>
+        </router-link>
+      </div>
 
-    <div
-      class="article"
-      v-html="html"
-    >
-    </div>
+      <div
+        class="article"
+        v-html="html"
+      >
+      </div>
+    </el-card>
 
     <el-row
       type="flex"
