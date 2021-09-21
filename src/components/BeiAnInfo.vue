@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row class="copyright">
-      <span v-text="'©' + year"></span>
+      <span v-text="'©' + since"></span>
       <span v-text="author"></span>
     </el-row>
 
@@ -9,8 +9,9 @@
       <el-link
         class="gxb"
         target="_blank"
-        href="http://beian.miit.gov.cn"
-      >鄂ICP备18028762号</el-link>
+        :href="beiAn.gabUrl"
+        v-text="beiAn.gabNo"
+      ></el-link>
 
       <el-image
         title="备案"
@@ -20,24 +21,37 @@
       <el-link
         class="gab"
         target="_blank"
-        href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102003833"
-      >鄂公网安备42011102003833号</el-link>
+        :href="beiAn.gabUrl"
+        v-text="beiAn.gabNo"
+      ></el-link>
     </el-row>
   </div>
 </template>
 
 <script>
+import { loadConfig } from '@/store/localstore';
+
 export default {
   name: 'BeiAnInfo',
   data() {
     return {
-      author: 'Aulang'
+      author: 'Aulang',
+      since: '2018',
+      beiAn: {
+        gxbNo: '鄂ICP备18028762号',
+        gxbUrl: 'http://beian.miit.gov.cn',
+        gabNo: '鄂公网安备42011102003833号',
+        gabUrl: 'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102003833'
+      }
     }
   },
-  computed: {
-    year() {
-      return new Date().getFullYear();
+  created() {
+    let config = loadConfig();
+    if (!config) {
+      return;
     }
+    this.since = config.since;
+    this.beiAn = config.beiAn;
   }
 }
 </script>
