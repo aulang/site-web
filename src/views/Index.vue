@@ -39,7 +39,7 @@
 
 <script>
 import Layout from '@/components/Layout.vue';
-import { articlesPage } from '@/api/article';
+import { getArticlesByPage } from '@/api/article';
 
 export default {
   components: { Layout },
@@ -51,13 +51,11 @@ export default {
     }
   },
   created() {
-    articlesPage(1, 2).then(response => {
-      console.log(response);
-
-      if (response.data.content) {
-        this.id = response.data.content[0].id;
-        this.title = response.data.content[0].title;
-        this.html = response.data.content[0].content;
+    getArticlesByPage(1, 2).then(response => {
+      if (response.data.records) {
+        this.id = response.data.records[0].id;
+        this.title = response.data.records[0].title;
+        this.html = response.data.records[0].content;
       }
     });
   }

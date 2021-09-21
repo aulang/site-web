@@ -1,15 +1,15 @@
 import request from '@/utils/request'
 
-export function articlesPage(pageNo, pageSize) {
+export function getArticlesByPage(pageNo, pageSize) {
     return request({
-        url: `/articles/page?page=${pageNo}&pageSize=${pageSize}`,
+        url: `/article/page?page=${pageNo}&size=${pageSize}`,
         method: 'get'
     })
 }
 
 export function getCategories() {
     return request({
-        url: '/categories',
+        url: '/category',
         method: 'get'
     })
 }
