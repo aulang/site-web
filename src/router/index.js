@@ -1,13 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import { getConfig } from '@/api/config'
+import { saveConfig, loadConfig } from '@/store/localstore'
+
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
     name: 'index',
-    component: () => import('../views/Index.vue')
+    component: () => import('../views/Index.vue'),
+    beforeEnter: (to, from, next) => {
+      if (loadConfig()) {
+        next();
+        return;
+      }
+      getConfig().then(response => {
+        if (response.code === 0) {
+          saveConfig(response.data);
+        }
+        next();
+      }, () => {
+        next();
+      });
+    }
   },
   {
     path: '/page',

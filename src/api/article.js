@@ -1,8 +1,17 @@
 import request from '@/utils/request'
 
-export function getArticlesByPage(pageNo, pageSize) {
+export function getArticlesByPage(pageNo, pageSize, category, keyword) {
+    let url = `/article/page?page=${pageNo}&size=${pageSize}`;
+
+    if (category) {
+        url = `${url}&category=${category}`;
+    }
+    if (keyword) {
+        url = `${url}&keyword=${keyword}`;
+    }
+
     return request({
-        url: `/article/page?page=${pageNo}&size=${pageSize}`,
+        url: url,
         method: 'get'
     })
 }
