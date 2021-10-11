@@ -9,7 +9,10 @@
           class="el-link el-link--default"
           :to="'/article/' + id"
         >
-          <span v-text="title"></span>
+          <span
+            style="font-size: 18px;"
+            v-text="title"
+          ></span>
         </router-link>
       </div>
 
@@ -20,20 +23,20 @@
       </div>
     </el-card>
 
-    <el-row
-      type="flex"
-      class="page"
-      justify="space-between"
+    <el-pagination
+      class="pager el-row is-justify-space-between el-row--flex"
+      :total="total"
+      :page-size="size"
+      :page-count="pages"
+      :current-page="current"
+      :hide-on-single-page="hideOnSinglePage"
+      @prev-click="fetchData(current - 1, 2)"
+      @next-click="fetchData(current + 1, 2)"
+      prev-text="下一页"
+      next-text="上一页"
+      layout="next, prev"
     >
-      <el-button type="text">
-        <i class="fas fa-arrow-left"></i>
-        &emsp;<span>上一页</span>
-      </el-button>
-      <el-button type="text">
-        <span>下一页</span>&emsp;
-        <i class="fas fa-arrow-right"></i>
-      </el-button>
-    </el-row>
+    </el-pagination>
   </layout>
 </template>
 
@@ -47,17 +50,35 @@ export default {
     return {
       id: '',
       title: '',
-      html: ''
+      html: '',
+      size: 0,
+      pages: 0,
+      total: 0,
+      current: 1,
+      hideOnSinglePage: true
     }
   },
   created() {
-    getArticlesByPage(1, 2).then(response => {
-      if (response.data.records) {
-        this.id = response.data.records[0].id;
-        this.title = response.data.records[0].title;
-        this.html = response.data.records[0].content;
-      }
-    });
+    this.fetchData(1, 2);
+  },
+  methods: {
+    fetchData(page, size) {
+      page = page || 1;
+      size = size || 2;
+
+      getArticlesByPage(page, size).then(response => {
+        this.size = response.data.size;
+        this.pages = response.data.pages;
+        this.total = response.data.total;
+        this.current = response.data.current;
+
+        if (response.data.records) {
+          this.id = response.data.records[0].id;
+          this.title = response.data.records[0].title;
+          this.html = response.data.records[0].content;
+        }
+      });
+    }
   }
 }
 </script>
@@ -67,17 +88,12 @@ export default {
   width: 100%;
   text-align: left;
 }
-
-.title span {
-  font-size: 18px;
-}
-
 .article {
   width: 100%;
   text-align: left;
 }
-
-.page span {
-  font-size: 16px;
+.pager {
+  margin-top: 0.5rem;
+  width: 100%;
 }
 </style>
