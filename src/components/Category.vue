@@ -10,7 +10,7 @@
     >
       <router-link
         class="el-link el-link--success is-underline"
-        :to="'page?category=' + category.id"
+        :to="'/page?category=' + category.id"
       >
         <i class="fa fa-book"></i>
         <span v-text="category.name"></span>

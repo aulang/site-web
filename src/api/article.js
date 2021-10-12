@@ -16,6 +16,13 @@ export function getArticlesByPage(pageNo, pageSize, category, keyword) {
     })
 }
 
+export function getArticleById(id) {
+    return request({
+        url: `/article/${id}`,
+        method: 'get'
+    })
+}
+
 export function getCategories() {
     return request({
         url: '/category',

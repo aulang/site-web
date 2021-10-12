@@ -31,7 +31,7 @@
         <div>
           <router-link
             class="el-link el-link--primary is-underline"
-            :to="'article/' + article.id"
+            :to="'/article/' + article.id"
           >阅读全文</router-link>
         </div>
       </div>
@@ -73,11 +73,12 @@ export default {
     }
   },
   methods: {
-    fetchData(page, size) {
+    fetchData(page, size, category) {
       page = page || 1;
       size = size || 20;
+      category = category || this.category;
 
-      getArticlesByPage(page, size, this.category).then(response => {
+      getArticlesByPage(page, size, category).then(response => {
         this.size = response.data.size;
         this.pages = response.data.pages;
         this.total = response.data.total;
@@ -92,9 +93,9 @@ export default {
   created() {
     this.fetchData(1, 20);
   },
-  watch: {
-    // 如果路由有变化，会再次执行该方法
-    '$route': 'fetchData'
+  beforeRouteUpdate(to, from, next) {
+    this.fetchData(1, 20, to.query.category);
+    next();
   }
 }
 </script>
