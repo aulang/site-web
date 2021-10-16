@@ -9,8 +9,8 @@
       <el-link
         class="gxb"
         target="_blank"
-        :href="beiAn.gabUrl"
-        v-text="beiAn.gabNo"
+        :href="beiAn.gxbUrl"
+        v-text="beiAn.gxbNo"
       ></el-link>
 
       <el-image
