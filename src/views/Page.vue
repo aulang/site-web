@@ -1,5 +1,10 @@
 <template>
   <layout>
+    <el-empty
+      description="暂无数据"
+      v-show="showNoData"
+    >
+    </el-empty>
     <el-card
       class="box-card"
       shadow="never"
@@ -69,6 +74,7 @@ export default {
       total: 0,
       current: 1,
       records: [],
+      showNoData: true,
       hideOnSinglePage: true
     }
   },
@@ -84,6 +90,7 @@ export default {
         this.total = response.data.total;
         this.current = response.data.current;
         this.records = response.data.records;
+        this.showNoData = response.data.total === 0;
       });
     },
     currentChange(val) {

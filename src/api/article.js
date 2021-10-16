@@ -29,3 +29,11 @@ export function getCategories() {
         method: 'get'
     })
 }
+
+export function commentArticle(data) {
+    return request({
+        url: '/comment',
+        method: 'post',
+        data
+    })
+}

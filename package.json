@@ -1,6 +1,7 @@
 {
   "name": "Aulang",
   "version": "0.1.0",
+  "main": ".eslintrc.js",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -9,7 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
     "vue": "^2.6.14",
