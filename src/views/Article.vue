@@ -37,21 +37,21 @@
           <el-table-column
             label="回复"
             type="expand"
+            width="20"
           >
             <template slot-scope="props">
               <el-table
                 :show-header="false"
                 :data="props.row.replies"
               >
-                <el-table-column width="60">
-
+                <el-table-column width="50">
                 </el-table-column>
                 <el-table-column
                   label="昵称"
                   width="180"
                 >
                   <template slot-scope="props">
-                    <i class="far fa-comments"></i>
+                    <i class="fas fa-reply"></i>
                     <span style="margin-left: 5px">{{ props.row.name }}</span>
                   </template>
                 </el-table-column>
@@ -61,6 +61,7 @@
                 ></el-table-column>
                 <el-table-column
                   prop="creationDate"
+                  width="200"
                   label="日期"
                 ></el-table-column>
               </el-table>
@@ -82,16 +83,9 @@
           ></el-table-column>
           <el-table-column
             prop="creationDate"
+            width="200"
             label="日期"
           ></el-table-column>
-          <el-table-column
-            width="100"
-            label="操作"
-          >
-            <el-button size="mini">
-              <i class="fas fa-reply"></i>
-            </el-button>
-          </el-table-column>
         </el-table>
       </div>
     </el-card>
