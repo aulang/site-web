@@ -29,6 +29,7 @@
         type="text"
         placeholder="输入关键字搜索"
         v-model="keyword"
+        @keyup.enter.native="search"
       >
         <el-button
           slot="append"
