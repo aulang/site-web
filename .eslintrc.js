@@ -1,17 +1,21 @@
-module.exports = {
+// @ts-check
+import { defineConfig } from 'eslint-define-config'
+
+module.exports = defineConfig({
   root: true,
   env: {
+    browser: true,
+    es2021: true,
     node: true
   },
-  'extends': [
-    'plugin:vue/essential',
-    'eslint:recommended'
-  ],
+  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:import/recommended', 'prettier'],
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 12,
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module'
   },
+  plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
+    'prettier/prettier': 'error'
   }
-}
+})
