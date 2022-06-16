@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'eslint-define-config'
+const { defineConfig } = require('eslint-define-config')
 
 module.exports = defineConfig({
   root: true,
@@ -10,12 +10,13 @@ module.exports = defineConfig({
   },
   extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:import/recommended', 'prettier'],
   parserOptions: {
-    ecmaVersion: 12,
     parser: '@typescript-eslint/parser',
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaVersion: 12
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error'
+    'prettier/prettier': 'error',
+    'import/no-unresolved': [0]
   }
 })
