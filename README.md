@@ -18,12 +18,5 @@
    按需自动导入 UI 组件
 9. unplugin-element-plus  
    为 Element Plus 按需引入样式
-10. vite-plugin-vue-setup-extend-plus  
-    为 script 标签添加 name 属性，方便设置组件名称如：
-
-```html
-<script setup name="ComponentName"></script>
-```
-
-11. @types/node
+10. @types/node
     path、@types/node 解决@/别名

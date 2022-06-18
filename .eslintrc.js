@@ -17,6 +17,7 @@ module.exports = defineConfig({
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
     'prettier/prettier': 'error',
-    'import/no-unresolved': [0]
+    'import/no-unresolved': [0],
+    'vue/multi-word-component-names': 'off'
   }
 })

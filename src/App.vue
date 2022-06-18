@@ -1,6 +1,5 @@
 <template>
-  <el-button type="primary">确定</el-button>
-  <el-empty description="description"></el-empty>
+  <router-view />
 </template>
 
 <script setup lang="ts"></script>

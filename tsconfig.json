@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
     "types": ["node"],
+    "jsx": "react",
+    "strict": true,
     "baseUrl": ".",
+    "rootDir": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
+  "jsx": "preserve",
   "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
+  "vueCompilerOptions": {
+    "experimentalDisableTemplateSupport": true
+  }
 }
