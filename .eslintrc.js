@@ -8,11 +8,17 @@ module.exports = defineConfig({
     es2021: true,
     node: true
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:import/recommended', 'prettier'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    'plugin:import/recommended',
+    'prettier',
+    './.eslintrc-auto-import.json'
+  ],
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
-    ecmaVersion: 12
+    ecmaVersion: 'latest'
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {

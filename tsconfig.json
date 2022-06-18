@@ -1,16 +1,20 @@
 {
   "compilerOptions": {
-    "types": ["node"],
-    "jsx": "react",
-    "strict": true,
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "jsx": "react",
+    "strict": true,
+    "types": ["node"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "useDefineForClassFields": true
   },
   "jsx": "preserve",
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "auto-imports.d.ts", "components.d.ts"],
   "exclude": ["dist", "node_modules"],
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
