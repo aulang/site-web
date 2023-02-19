@@ -1,13 +1,8 @@
 <template>
   <div class="select-container" style="width: 100%; position: relative">
     <el-select popper-class="pagination-pop" v-bind="{ ...$props, ...$attrs }">
-      <slot></slot>
-      <el-pagination
-        small
-        layout="prev, pager, next"
-        :hide-on-single-page="true"
-        v-bind="{ ...$props, ...$attrs }"
-      ></el-pagination>
+      <slot />
+      <el-pagination small layout="prev, pager, next" :hide-on-single-page="true" v-bind="{ ...$props, ...$attrs }" />
     </el-select>
   </div>
 </template>

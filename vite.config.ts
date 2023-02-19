@@ -12,17 +12,16 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 
 import ElementPlus from 'unplugin-element-plus/vite'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    ElementPlus(),
+    ElementPlus({}),
     AutoImport({
       imports: ['vue', 'pinia', 'vue-router'],
       eslintrc: {
         enabled: true,
-        filepath: './.eslintrc-auto-import.json',
-        globalsPropValue: true
+        globalsPropValue: true,
+        filepath: './.eslintrc-auto-import.json'
       },
       resolvers: [ElementPlusResolver()]
     }),

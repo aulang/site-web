@@ -16,7 +16,7 @@
     <el-container>
       <el-header>Header</el-header>
       <el-main>
-        <el-button type="primary">登录</el-button>
+        <el-button type="primary" @click="login">登录</el-button>
         <el-tag>{{ hitokoto }}</el-tag>
       </el-main>
       <el-footer>Footer</el-footer>
@@ -25,10 +25,15 @@
 </template>
 
 <script setup lang="ts">
+import Toast from '@/utils/toast'
 import { getHitokoto } from '@/api/hitokoto'
 
 const keyword = ref('')
 const hitokoto = ref(null)
+
+const login = () => {
+  Toast.success('Login Success')
+}
 
 onMounted(() => {
   getHitokoto().then((res: any) => {

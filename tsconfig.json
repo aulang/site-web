@@ -14,9 +14,6 @@
     "useDefineForClassFields": true
   },
   "jsx": "preserve",
-  "include": ["src/**/*", "auto-imports.d.ts", "components.d.ts"],
   "exclude": ["dist", "node_modules"],
-  "vueCompilerOptions": {
-    "experimentalDisableTemplateSupport": true
-  }
+  "include": ["src/**/*", "auto-imports.d.ts", "components.d.ts"]
 }

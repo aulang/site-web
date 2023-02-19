@@ -5,14 +5,14 @@ module.exports = defineConfig({
   root: true,
   env: {
     browser: true,
-    es2021: true,
+    es2022: true,
     node: true
   },
   extends: [
-    'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:import/recommended',
     'prettier',
+    'eslint:recommended',
+    'plugin:import/recommended',
+    'plugin:vue/vue3-recommended',
     './.eslintrc-auto-import.json'
   ],
   parserOptions: {
@@ -22,8 +22,10 @@ module.exports = defineConfig({
   },
   plugins: ['vue', '@typescript-eslint', 'prettier'],
   rules: {
-    'prettier/prettier': 'error',
     'import/no-unresolved': [0],
-    'vue/multi-word-component-names': 'off'
+    'prettier/prettier': 'error',
+    'vue/max-attributes-per-line': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/singleline-html-element-content-newline': 'off'
   }
 })
