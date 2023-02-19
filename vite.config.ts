@@ -13,6 +13,16 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import ElementPlus from 'unplugin-element-plus/vite'
 
 export default defineConfig({
+  server: {
+    port: 5173,
+    cors: true,
+    proxy: {
+      '/api': {
+        target: 'https://aulang.cn',
+        changeOrigin: true
+      }
+    }
+  },
   plugins: [
     vue(),
     ElementPlus({}),
