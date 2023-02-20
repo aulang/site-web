@@ -1,12 +1,11 @@
 <template>
   <div class="flex justify-between m-6">
     <div class="space-x-4">
-      <el-link type="success">success</el-link>
-      <el-link type="success">success</el-link>
+      <el-link type="success">Aulang</el-link>
       <el-link type="success">success</el-link>
     </div>
     <div>
-      <el-input v-model="keyword" placeholder="输入关键字搜索">
+      <el-input v-model="keyword" size="large" placeholder="输入关键字搜索">
         <template #append>.com</template>
       </el-input>
     </div>

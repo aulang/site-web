@@ -1,3 +1,3 @@
 export default {
-  title: 'site'
+  title: '虽是所'
 }
